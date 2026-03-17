@@ -7,8 +7,7 @@ import os
 import io
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
-from google import genai
-from google.genai import types
+import google.generativeai as genai
 
 
 IMAGE_SIZE = (1080, 1080)
