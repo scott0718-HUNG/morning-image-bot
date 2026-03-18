@@ -341,7 +341,7 @@ def compose_image(bg_image, quote, date_str, font_path):
     # ---- 左上角日期 ----
     date_x, date_y = 50, 40
     draw_text_with_outline(
-        draw, (date_x, date_y), date_str,
+        draw, (date_x, date_y), date_str, "  早安",
         fonts['date'], (255, 255, 255), (0, 0, 0), outline_width=2
     )
 
@@ -394,7 +394,7 @@ def compose_image(bg_image, quote, date_str, font_path):
     )
 
     # ---- 右下角小標記 ----
-    mark_text = "錦男的祝福"
+    mark_text = "錦男贈佳言"
     try:
         mark_font = ImageFont.truetype(font_path, 22) if font_path else fonts['source']
         draw.text((900, 1040), mark_text, font=mark_font, fill=(255, 255, 255, 160))
