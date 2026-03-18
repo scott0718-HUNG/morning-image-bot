@@ -1,0 +1,44 @@
+name: 每日早安勵志圖推播
+
+on:
+  schedule:
+    # 每天台灣時間 07:00（UTC 23:00，前一天）
+    - cron: '0 23 * * *'
+  workflow_dispatch:  # 允許手動觸發（測試用）
+
+jobs:
+  send-morning-image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 📥 取得程式碼
+        uses: actions/checkout@v4
+
+      - name: 🐍 設定 Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 📦 安裝相依套件
+        run: pip install -r requirements.txt
+
+      - name: 🖼 安裝系統字型（備用）
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk 2>/dev/null || true
+
+      - name: 🌅 執行早安圖發送程式
+        env:
+          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python generate_morning_image.py
+
+      - name: 📊 執行摘要
+        if: always()
+        run: |
+          echo "### 早安圖發送結果" >> $GITHUB_STEP_SUMMARY
+          echo "- 執行時間：$(TZ='Asia/Taipei' date '+%Y-%m-%d %H:%M:%S') 台灣時間" >> $GITHUB_STEP_SUMMARY
+          echo "- 狀態：${{ job.status }}" >> $GITHUB_STEP_SUMMARY
