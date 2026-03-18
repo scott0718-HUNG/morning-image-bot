@@ -347,9 +347,9 @@ def compose_image(bg_image, quote, date_str, font_path):
 
     # ---- 大裝飾引號 ----
     try:
-        deco_font = ImageFont.truetype(font_path, 180) if font_path else fonts['quote_large']
-        draw.text((50, 250), "「", font=deco_font, fill=(255, 255, 255, 40))
-        draw.text((900, 550), "」", font=deco_font, fill=(255, 255, 255, 40))
+         deco_font = ImageFont.truetype(font_path, 180) if font_path else fonts['quote_large']
+    #    draw.text((50, 250), "「", font=deco_font, fill=(255, 255, 255, 40))
+    #    draw.text((900, 550), "」", font=deco_font, fill=(255, 255, 255, 40))
     except Exception:
         pass
 
@@ -394,7 +394,7 @@ def compose_image(bg_image, quote, date_str, font_path):
     )
 
     # ---- 右下角小標記 ----
-    mark_text = "每日早安 🌅"
+    mark_text = "錦男的祝福"
     try:
         mark_font = ImageFont.truetype(font_path, 22) if font_path else fonts['source']
         draw.text((900, 1040), mark_text, font=mark_font, fill=(255, 255, 255, 160))
