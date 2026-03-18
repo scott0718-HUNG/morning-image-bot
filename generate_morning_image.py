@@ -394,7 +394,7 @@ def compose_image(bg_image, quote, date_str, font_path):
     )
 
     # ---- 右下角小標記 ----
-    mark_text = "每日早安 🌅"
+    mark_text = "錦男贈佳言"
     try:
         mark_font = ImageFont.truetype(font_path, 22) if font_path else fonts['source']
         draw.text((900, 1040), mark_text, font=mark_font, fill=(255, 255, 255, 160))
