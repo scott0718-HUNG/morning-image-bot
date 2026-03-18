@@ -341,7 +341,7 @@ def compose_image(bg_image, quote, date_str, font_path):
     # ---- 左上角日期 ----
     date_x, date_y = 50, 40
     draw_text_with_outline(
-        draw, (date_x, date_y), date_str, "  早安",
+        draw, (date_x, date_y), date_str,
         fonts['date'], (255, 255, 255), (0, 0, 0), outline_width=2
     )
 
