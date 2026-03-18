@@ -348,8 +348,8 @@ def compose_image(bg_image, quote, date_str, font_path):
     # ---- 大裝飾引號 ----
     try:
         deco_font = ImageFont.truetype(font_path, 180) if font_path else fonts['quote_large']
-        draw.text((50, 250), "「", font=deco_font, fill=(255, 255, 255, 40))
-        draw.text((900, 550), "」", font=deco_font, fill=(255, 255, 255, 40))
+        draw.text((50, 250), " ", font=deco_font, fill=(255, 255, 255, 40))
+        draw.text((900, 550), " ", font=deco_font, fill=(255, 255, 255, 40))
     except Exception:
         pass
 
